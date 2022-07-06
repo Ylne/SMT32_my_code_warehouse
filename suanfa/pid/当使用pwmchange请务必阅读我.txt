@@ -1,0 +1,23 @@
+void pwmchange(void)
+{
+			if ( MotorOutputleft > 0)
+			{
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, MotorOutputleft);
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
+			}
+			else
+			{
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, -MotorOutputleft);
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+			}
+			if (MotorOutputright > 0)
+			{
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, MotorOutputright);
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
+			}
+			else
+			{
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, -MotorOutputright);
+				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
+			}
+}//之前的pwmchange有问题
